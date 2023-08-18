@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class UtilisateurServiceTest {
+public class AuthServiceTest {
     @Mock
     private UtilisateurRepository utilisateurRepository;
 
@@ -22,11 +22,24 @@ public class UtilisateurServiceTest {
     @Test
     public void shouldAddNewUtilisateurWhenValidDataProvided() {
         //Arrange
-        Utilisateur utilisateur = new Utilisateur(1L,"toto", "1234");
+        Utilisateur utilisateur = new Utilisateur("toto", "1234");
         Mockito.when(utilisateurRepository.save(utilisateur)).thenReturn(utilisateur);
 
         //Act
         Utilisateur result = utilisateurService.enregistrerUtilisateur( "toto", "1234");
+
+        //Assert
+        Assertions.assertEquals(utilisateur, result);
+    }
+
+    @Test
+    public void shoulNotdAddNewUtilisateurWhenInValidDataProvided() {
+        //Arrange
+        Utilisateur utilisateur = new Utilisateur("toto", "1234");
+        Mockito.when(utilisateurRepository.save(utilisateur)).thenReturn(utilisateur);
+
+        //Act
+        Utilisateur result = utilisateurService.enregistrerUtilisateur( "tato", "1234");
 
         //Assert
         Assertions.assertEquals(utilisateur, result);

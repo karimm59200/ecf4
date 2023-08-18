@@ -25,11 +25,11 @@ public class ObservationServiceTest {
     @Test
     public void shouldAddNewObservationWhenValidDataProvided() {
         //Arrange
-        Observation observation = new Observation(1,1L,"Mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg" );
+        Observation observation = new Observation(1,1L,"Mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg", true );
         Mockito.when(observationRepository.save(observation)).thenReturn(observation);
 
         //Act
-        Observation result = observationService.createObservation(1L,"mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg");
+        Observation result = observationService.createObservation( 1L,"Mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg", true);
 
         //Assert
         Assertions.assertEquals(observation, result);
@@ -39,7 +39,7 @@ public class ObservationServiceTest {
     void getObservationByName() {
 
         //Arrange
-        Observation observation = new Observation(1,1L,"Mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg" );
+        Observation observation = new Observation(1,1L,"Mars", "Planète rouge", "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg", true );
         Mockito.when(observationRepository.findByName("Mars")).thenReturn(observation);
         //Act
         Observation result = observationService.getObservationByName("Mars");

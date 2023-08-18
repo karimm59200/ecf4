@@ -15,5 +15,7 @@ public interface ObservationRepository  extends CrudRepository<Observation, Inte
 
      List<Observation> findByUtilisateurId(Long utilisateurId);
 
+     Observation save(Observation observation);
+
 
 }

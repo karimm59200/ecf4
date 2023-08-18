@@ -18,12 +18,13 @@ public class ObservationService {
         this.observationRepository = observationRepository;
     }
 
-    public Observation createObservation(Long utilisateurId, String name, String description, String urlImage) {
+    public Observation createObservation( Long utilisateurId, String name, String description, String urlImage, Boolean isPublic) {
         Observation observation = Observation.builder()
                 .utilisateurId(utilisateurId)
                 .name(name)
                 .description(description)
                 .urlImage(urlImage)
+                .isPublic(isPublic)
                 .build();
         return observationRepository.save(observation);
     }

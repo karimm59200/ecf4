@@ -32,7 +32,9 @@ public class Observation {
 
     private String  urlImage;
 
-    public Observation(int id, Long utilisateurId, String name, String description, String urlImage) {
+    private Boolean isPublic;
+
+    public Observation(int id, Long utilisateurId, String name, String description, String urlImage, Boolean isPublic) {
         this.id = id;
         this.utilisateurId = utilisateurId;
         this.name = name;

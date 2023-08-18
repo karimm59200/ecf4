@@ -22,7 +22,7 @@ public class ObservationController {
     @PostMapping("")
     public ResponseEntity<Observation> post(@RequestParam Long utilisateurId, @RequestParam String name, @RequestParam String description, @RequestParam String urlImage) {
        // Observation observation = observationService.createObservation(1L, "observation1", null, "description1", "urlImage1");
-        Observation observation = observationService.createObservation(utilisateurId, name, description, urlImage);
+        Observation observation = observationService.createObservation(utilisateurId, name, description, urlImage, true);
         return ResponseEntity.ok(observation);
     }
 
